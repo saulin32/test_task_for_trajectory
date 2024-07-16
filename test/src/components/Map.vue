@@ -49,14 +49,14 @@ async function initMap() {
 
 // initMap();
 
-function getMap() {
-  axios
-    .get(`https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => console.error(error));
-}
+// function getMap() {
+//   axios
+//     .get(`https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`)
+//     .then((response) => {
+//       console.log(response);
+//     })
+//     .catch((error) => console.error(error));
+// }
 
-getMap();
+// getMap();
 </script>
