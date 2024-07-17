@@ -29,7 +29,6 @@ let props = defineProps({
     default: false,
   },
   mask: String,
-  // type: String,
 });
 
 let modelValue = defineModel();
