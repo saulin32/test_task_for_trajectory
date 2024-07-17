@@ -1,5 +1,5 @@
 <template>
-  <div class="border rounded-md shadow-md px-3 py-2">
+  <div class="border rounded-md shadow-md px-3 py-2 bg-white">
     <div class="flex w-full gap-3" :class="{ hidden: vehicle.editable }">
       <img
         :src="randomAvatar"

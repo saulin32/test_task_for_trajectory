@@ -1,8 +1,10 @@
 <template>
-  <Header />
+  <div class="bg-slate-100">
+    <Header />
 
-  <div class="px-28">
-    <MainPage />
+    <div class="px-28">
+      <MainPage />
+    </div>
   </div>
 </template>
 

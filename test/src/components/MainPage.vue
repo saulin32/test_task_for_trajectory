@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3 flex gap-3">
-    <div class="flex gap-2 items-center rounded-md shadow-md pr-2">
+    <div class="flex gap-2 items-center rounded-md shadow-md pr-2 bg-white">
       <button
         class="flex gap-2 items-center !w-full !h-full py-1 px-2"
         @click="
@@ -38,7 +38,7 @@
       </button>
     </div>
 
-    <div class="flex gap-2 items-center rounded-md shadow-md pr-2">
+    <div class="flex gap-2 items-center rounded-md shadow-md pr-2 bg-white">
       <button
         class="flex gap-2 items-center !w-full !h-full py-1 px-2"
         @click="
