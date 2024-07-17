@@ -76,7 +76,7 @@
       </button>
     </div>
   </div>
-  <div class="grid grid-cols-2 gap-8 w-full">
+  <div class="grid xl:grid-cols-2 lg:grid-cols-1 gap-8 w-full">
     <CarCard
       v-for="vehicle in filteredVehicles"
       :key="vehicle.id"
