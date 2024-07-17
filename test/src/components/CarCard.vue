@@ -62,13 +62,13 @@
               <p class="text-2xl">{{ vehicle.price }} ₽</p>
             </div>
             <button
-              class="border border-blue-400 rounded-md p-1 text-blue-400 hover:bg-blue-500 flex items-center justify-center gap-2 group hover:text-white hover:border-blue-700"
+              class="border border-blue-400 rounded-md p-1 text-blue-400 hover:bg-blue-500 flex items-center justify-center gap-2 group hover:text-white"
               @click="$emit('showLocation')"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"
-                class="h-5 group-hover:fill-white fill-blue-500"
+                class="h-5 group-hover:fill-red-500 fill-blue-500"
               >
                 <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
