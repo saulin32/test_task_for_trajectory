@@ -81,7 +81,7 @@
       v-for="vehicle in filteredVehicles"
       :key="vehicle.id"
       :vehicle
-      @showLocation="showModalLocation = true"
+      @showLocation="(showModalLocation = true), (selectVehicle = vehicle)"
       @delete="deleteVehicle(vehicle)"
     />
   </div>
@@ -91,9 +91,13 @@
         Местоположение
       </h3>
     </template>
-    <template #body> </template>
+    <template #body>
+      <Map
+        :latitude="selectVehicle.latitude"
+        :longitude="selectVehicle.longitude"
+      />
+    </template>
   </Modal>
-  <Map />
 </template>
 
 <script setup>
@@ -107,6 +111,7 @@ import Map from "./Map.vue";
 
 let vehicles = ref([]);
 let showModalLocation = ref(false);
+let selectVehicle = ref(null);
 
 let sort = reactive({
   year: null,

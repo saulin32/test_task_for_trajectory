@@ -84,17 +84,30 @@
     <div v-if="vehicle.editable">
       <div class="flex justify-end">
         <button
-          @click="vehicle.editable = false"
+          @click="
+            vehicle.name = defaultVehicle.name;
+            vehicle.price = defaultVehicle.price;
+            vehicle.model = defaultVehicle.model;
+            vehicle.editable = false;
+          "
           class="text-white border bg-blue-800 px-2 py-1 rounded-md"
         >
           Назад
         </button>
       </div>
-      <form class="grid grid-cols-2 gap-2" @submit="vehicle.editable = false">
+      <form
+        class="grid grid-cols-2 gap-2"
+        @submit.prevent="vehicle.editable = false"
+      >
+        <Input label="Марка" v-model="vehicle.name" required />
         <Input label="Модель" v-model="vehicle.model" required />
-        <Input label="Год выпуска" v-model="vehicle.year" required />
-        <Input label="Стоимость" v-model="vehicle.color" required />
-        <Input label="Цвет" v-model="vehicle.price" required />
+        <Input
+          class="col-span-2"
+          label="Стоимость"
+          v-model="vehicle.price"
+          required
+          mask="#######"
+        />
         <button
           type="submit"
           class="text-white border bg-blue-800 px-2 py-1 rounded-md col-span-2"
@@ -115,6 +128,8 @@ const props = defineProps({
     type: Object,
   },
 });
+
+let defaultVehicle = { ...props.vehicle };
 
 let emits = defineEmits(["showLocation", "delete"]);
 

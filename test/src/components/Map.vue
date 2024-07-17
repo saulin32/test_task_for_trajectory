@@ -1,62 +1,45 @@
 <template>
-  <!-- <YandexMap
-    v-model="map"
-    :settings="{
-      location: {
-        center: [37.617644, 55.755819],
-        zoom: 9,
-      },
-    }"
-    width="100%"
-    height="500px"
-  >
-    <YandexMapDefaultSchemeLayer />
-  </YandexMap> -->
-  <div id="map" style="width: 600px; height: 400px"></div>
+  <div class="h-full">
+    <div id="map" style="width: 100%; height: 700px"></div>
+  </div>
 </template>
 
 <script setup>
-// import { YandexMap, YandexMapDefaultSchemeLayer } from "vue-yandex-maps";
-import axios from "axios";
+import { onMounted } from "vue";
+
 const apiKey = "c19569d6-82c0-426e-b7e0-00c2bf556d0a";
 
-async function initMap() {
-  // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-  await ymaps3.ready;
+let props = defineProps({
+  latitude: {},
+  longitude: {},
+});
 
-  const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+function initMap() {
+  if (typeof ymaps === "undefined") {
+    console.error("Yandex Maps script not loaded");
+    return;
+  }
 
-  // Иницилиазируем карту
-  const map = new YMap(
-    // Передаём ссылку на HTMLElement контейнера
-    document.getElementById("map"),
+  ymaps.ready(() => {
+    const map = new ymaps.Map("map", {
+      center: [props.latitude, props.longitude],
+      zoom: 10,
+    });
 
-    // Передаём параметры инициализации карты
-    {
-      location: {
-        // Координаты центра карты
-        center: [37.588144, 55.733842],
+    const placemark = new ymaps.Placemark(
+      [props.latitude, props.longitude],
+      {}
+    );
 
-        // Уровень масштабирования
-        zoom: 10,
-      },
-    }
-  );
-
-  // Добавляем слой для отображения схематической карты
-  map.addChild(new YMapDefaultSchemeLayer());
+    map.geoObjects.add(placemark);
+  });
 }
 
-// initMap();
-
-// function getMap() {
-//   axios
-//     .get(`https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// getMap();
+onMounted(() => {
+  const script = document.createElement("script");
+  script.src = `https://api-maps.yandex.ru/2.1/?apikey=${apiKey}&lang=ru_RU`;
+  script.onload = initMap;
+  script.onerror = () => console.error("Yandex Maps script loading error");
+  document.head.appendChild(script);
+});
 </script>

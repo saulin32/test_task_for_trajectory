@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import MainPage from "./components/MainPage.vue";
 import Header from "./components/Header.vue";
 </script>
